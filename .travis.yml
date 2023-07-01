@@ -2,10 +2,8 @@ sudo: required
 services:
   - docker
 
+before_install:
+  - docker build -t osheaman/docker-react -f Dockerfile.dev .
 
-before_install: 
-  - docker build -t osheaman/docker-react -f Dockerfile.Dev .
-
-
-script: 
+script:
   - docker run -e CI=true osheaman/docker-react npm run test
